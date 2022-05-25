@@ -1,0 +1,5 @@
+# ignore all logs
+*.logs
+.dart_tool/
+test/
+build/
