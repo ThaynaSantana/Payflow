@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:payflow/modules/home/home_page.dart';
-import 'package:payflow/modules/splash/login/login_page.dart';
 import 'package:payflow/shared/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController {
+  // ignore: unused_field
   var _isAuthenticated = false;
   UserModel? _user;
 
@@ -12,10 +11,10 @@ class AuthController {
 
   void setUser(BuildContext context, UserModel? user) {
     if (user != null) {
-      _isAuthenticated = true;
+      saveUser(user);
+      _user = user;
       Navigator.pushReplacementNamed(context, '/home');
     } else {
-      _isAuthenticated = false;
       Navigator.pushReplacementNamed(context, '/login');
     }
   }
@@ -28,13 +27,15 @@ class AuthController {
 
   Future<void> currentUser(BuildContext context) async {
     final instance = await SharedPreferences.getInstance();
+    await Future.delayed(Duration(seconds: 2));
     if (instance.containsKey('user')) {
       final json = instance.get('user') as String;
+      // ignore: use_build_context_synchronously
       setUser(context, UserModel.fromJson(json));
       return;
     } else {
+      // ignore: use_build_context_synchronously
       setUser(context, null);
     }
-    
   }
 }
