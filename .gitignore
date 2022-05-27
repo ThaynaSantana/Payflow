@@ -11,3 +11,4 @@ package-lock.json
 pubspec.lock
 .vscode/
 test/
+analysis_options.yaml
