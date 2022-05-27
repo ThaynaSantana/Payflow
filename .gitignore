@@ -1,5 +1,13 @@
 # ignore all logs
 *.logs
-.dart_tool/
-test/
 build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.idea/
+.metadadata
+package-lock.json
+.packages
+pubspec.lock
+.vscode/
+test/
